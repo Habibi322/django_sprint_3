@@ -4,7 +4,9 @@ from .models import Post, Category
 
 
 def index(request):
-    posts = Post.objects.select_related('author', 'category', 'location').filter(
+    posts = Post.objects.select_related(
+        'author', 'category', 'location'
+    ).filter(
         is_published=True,
         category__is_published=True,
         pub_date__lte=timezone.now()
@@ -29,7 +31,9 @@ def category_posts(request, category_slug):
         slug=category_slug,
         is_published=True
     )
-    posts = Post.objects.select_related('author', 'category', 'location').filter(
+    posts = Post.objects.select_related(
+        'author', 'category', 'location'
+    ).filter(
         category=category,
         is_published=True,
         pub_date__lte=timezone.now()

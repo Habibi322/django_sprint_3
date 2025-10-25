@@ -22,7 +22,10 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'category', 'pub_date', 'is_published', 'created_at')
+    list_display = (
+        'title', 'author', 'category', 'pub_date',
+        'is_published', 'created_at'
+    )
     list_editable = ('is_published',)
     list_filter = ('category', 'location', 'author', 'is_published')
     search_fields = ('title', 'text')
